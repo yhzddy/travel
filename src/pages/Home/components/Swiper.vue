@@ -13,12 +13,12 @@
 
 <script>
   export default {
-    name: 'carrousel',
+    name: 'HomeSwiper',
     data() {
       return {
         swiperOption: {
            pagination: '.swiper-pagination',    //页码器
-           loop:true                            //循环拉动
+           loop:true                            //前后拉动
         },
         imgList: [{
             id:1,
