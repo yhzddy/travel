@@ -1,6 +1,6 @@
 <template>
     <div class="icons">
-        <swiper :options="swiperOption">
+        <swiper :options="swiperOption" v-if="showSwiper">
             <swiper-slide v-for="(page,index) of pages" :key="index">
                 <div 
                     class="icon" 
@@ -20,65 +20,68 @@
 <script>
 export default {
     name:'HomeIcon',
+    props:{
+        list:Array
+    },
     data () {
         return {
             swiperOption: {
                      pagination: '.swiper-pagination',    //页码器
                      loop:true                            //前后拉动
             },
-            iconList:[
-                {
-                    id:'0001',
-                    imgUrl: require("@/assets/img/ace00878a52d9702.png"),
-                    desc:'热门景点'
-                },
-                {
-                    id:'0002',
-                    imgUrl: require("@/assets/img/86cbcfc533330d02.png"),
-                    desc:'滑雪季'
-                },
-                {
-                    id:'0003',
-                    imgUrl: require("@/assets/img/83f636bd75ae6302.png"),
-                    desc:'泡温泉'
-                },
-                {
-                    id:'0004',
-                    imgUrl: require("@/assets/img/b1ea3c8c7fb6db02.png"),
-                    desc:'动植物园'
-                },
-                {
-                    id:'0005',
-                    imgUrl: require("@/assets/img/569d3c096e542502.png"),
-                    desc:'一日游'
-                },
-                {
-                    id:'0006',
-                    imgUrl: require("@/assets/img/b1ea3c8c7fb6db02.png"),
-                    desc:'必游榜单'
-                },
-                {
-                    id:'0007',
-                    imgUrl: require("@/assets/img/2640cab202c41b02.png"),
-                    desc:'自然风光'
-                },
-                {
-                    id:'0008',
-                    imgUrl: require("@/assets/img/4bd370f3eb1acd02.png"),
-                    desc:'全部'
-                },
-                {
-                    id:'0009',
-                    imgUrl: require("@/assets/img/4bd370f3eb1acd02.png"),
-                    desc:'全部'
-                },
-            ],
+            // iconList:[
+            //     {
+            //         id:'0001',
+            //         imgUrl: require("@/assets/img/ace00878a52d9702.png"),
+            //         desc:'热门景点'
+            //     },
+            //     {
+            //         id:'0002',
+            //         imgUrl: require("@/assets/img/86cbcfc533330d02.png"),
+            //         desc:'滑雪季'
+            //     },
+            //     {
+            //         id:'0003',
+            //         imgUrl: require("@/assets/img/83f636bd75ae6302.png"),
+            //         desc:'泡温泉'
+            //     },
+            //     {
+            //         id:'0004',
+            //         imgUrl: require("@/assets/img/b1ea3c8c7fb6db02.png"),
+            //         desc:'动植物园'
+            //     },
+            //     {
+            //         id:'0005',
+            //         imgUrl: require("@/assets/img/569d3c096e542502.png"),
+            //         desc:'一日游'
+            //     },
+            //     {
+            //         id:'0006',
+            //         imgUrl: require("@/assets/img/b1ea3c8c7fb6db02.png"),
+            //         desc:'必游榜单'
+            //     },
+            //     {
+            //         id:'0007',
+            //         imgUrl: require("@/assets/img/2640cab202c41b02.png"),
+            //         desc:'自然风光'
+            //     },
+            //     {
+            //         id:'0008',
+            //         imgUrl: require("@/assets/img/4bd370f3eb1acd02.png"),
+            //         desc:'全部'
+            //     },
+            //     {
+            //         id:'0009',
+            //         imgUrl: require("@/assets/img/4bd370f3eb1acd02.png"),
+            //         desc:'全部'
+            //     },
+            // ],
         }
     },
     computed:{
         pages () {
             const pages =[]     //书
-            this.iconList.forEach((item,index)=> {
+            this.list.forEach((item,index)=> {
                 const page = Math.floor(index/8)     //页码   //循环图标数组，判断该item属于第几页，该页如果不存在则先给空数组，并给该页添加对象
                 if(!pages[page]){
                     pages[page] = []
@@ -86,6 +89,9 @@ export default {
                  pages[page].push(item)
             })
             return pages
+        },
+        showSwiper () {
+            return this.list.length
         }
     }
     

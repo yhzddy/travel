@@ -2,7 +2,7 @@
     <div>
         <div class="recommend-title">热销推荐</div>
         <ul>
-            <li class="item" v-for="item in recommendList" :key="item.id">
+            <li class="item" v-for="item in list" :key="item.id">
                  <img class="item-img" :src="item.imgUrl" alt="">
                 <div class="item-info">
                     <p class="item-title">{{item.title}}</p>
@@ -17,34 +17,37 @@
 <script>
 export default {
     name: 'HomeRecommend',
+    props:{
+        list: Array
+    },
     data () {
         return{
-            recommendList:[
-            {
-                id:'0001',
-                imgUrl:'https://imgs.qunarzz.com/sight/p0/1603/8f/8fff2332dff679ec90.water.jpg_224x148_d9a5b20a.jpg',
-                title:'普陀山',
-                desc:'海天佛国 观音道场 ——普陀山',
-            },
-            {
-                id:'0002',
-                imgUrl:'https://imgs.qunarzz.com/sight/p0/1603/8f/8fff2332dff679ec90.water.jpg_224x148_d9a5b20a.jpg',
-                title:'普陀山',
-                desc:'海天佛国 观音道场 ——普陀山',
-            },
-            {
-                id:'0003',
-                imgUrl:'https://imgs.qunarzz.com/sight/p0/1603/8f/8fff2332dff679ec90.water.jpg_224x148_d9a5b20a.jpg',
-                title:'普陀山',
-                desc:'海天佛国 观音道场 ——普陀山',
-            },
-            {
-                id:'0004',
-                imgUrl:'https://imgs.qunarzz.com/sight/p0/1603/8f/8fff2332dff679ec90.water.jpg_224x148_d9a5b20a.jpg',
-                title:'普陀山',
-                desc:'海天佛国 观音道场 ——普陀山',
-            },
-        ]
+        //     recommendList:[
+        //     {
+        //         id:'0001',
+        //         imgUrl:'https://imgs.qunarzz.com/sight/p0/1603/8f/8fff2332dff679ec90.water.jpg_224x148_d9a5b20a.jpg',
+        //         title:'普陀山',
+        //         desc:'海天佛国 观音道场 ——普陀山',
+        //     },
+        //     {
+        //         id:'0002',
+        //         imgUrl:'https://imgs.qunarzz.com/sight/p0/1603/8f/8fff2332dff679ec90.water.jpg_224x148_d9a5b20a.jpg',
+        //         title:'普陀山',
+        //         desc:'海天佛国 观音道场 ——普陀山',
+        //     },
+        //     {
+        //         id:'0003',
+        //         imgUrl:'https://imgs.qunarzz.com/sight/p0/1603/8f/8fff2332dff679ec90.water.jpg_224x148_d9a5b20a.jpg',
+        //         title:'普陀山',
+        //         desc:'海天佛国 观音道场 ——普陀山',
+        //     },
+        //     {
+        //         id:'0004',
+        //         imgUrl:'https://imgs.qunarzz.com/sight/p0/1603/8f/8fff2332dff679ec90.water.jpg_224x148_d9a5b20a.jpg',
+        //         title:'普陀山',
+        //         desc:'海天佛国 观音道场 ——普陀山',
+        //     },
+        // ]
         }
     }
     
