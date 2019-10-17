@@ -5,11 +5,14 @@
     </div>
     <div class="header-input">
         <i class="iconfont iconsousuo"></i>        
-        输入城市/景点/游玩主题</div>
-    <div class="header-right">
-        {{city}}
-        <i class="iconfont iconjiantou2 arrow-icon"></i>
+        输入城市/景点/游玩主题
     </div>
+    <router-link to="/city">
+        <div class="header-right">
+            {{city}}
+            <i class="iconfont iconjiantou2 arrow-icon"></i>
+        </div>
+    </router-link>
 </div>
 
 </template>
@@ -30,7 +33,7 @@ export default {
       //styl文件做背景全局变量  @是一种快捷写法 @代表src目录
   .header
       display:flex
-      line-height: .86rem
+      line-height: $headerHeight
       background: $bgColor
       color: #fff
       .header-left
@@ -53,6 +56,7 @@ export default {
           width: 1.24rem
           float: left
           text-align: center
+          color: #fff
           .arrow-icon
             margin-left: -.04rem
             font-size: .24rem
