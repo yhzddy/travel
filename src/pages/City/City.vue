@@ -1,11 +1,14 @@
 <template>
     <div>
         <CityHeader></CityHeader>
+        <CitySearch></CitySearch>
     </div>
 </template>
 
 <script>
 import CityHeader from './components/Header.vue'
+import CitySearch from './components/Search.vue'
+
 
 export default {
     name: 'City',
@@ -13,7 +16,8 @@ export default {
         return{}
     },
     components:{
-        CityHeader:CityHeader
+        CityHeader:CityHeader,
+        CitySearch:CitySearch
     }
 
 }
