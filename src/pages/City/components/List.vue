@@ -18,7 +18,11 @@
                 </div>
             </div>
             <!-- v-for="(item,key) in cities" 循环cities对象属性 key：value的形式输出 key是key value是item -->
-            <div class="area" v-for="(item,key) in cities" :key="key">
+            <div class="area" 
+                v-for="(item,key) in cities" 
+                :key="key"
+                :ref="key"
+            >
                 <div class="title border-topbottom">{{key}}</div>
                 <div class="item-list" v-for="inneritem in item" :key="inneritem.id">
                     <div class="item border-bottom">{{inneritem.name}}</div>
@@ -35,10 +39,21 @@ export default {
     name: 'CityList',
     props:{
         cities:Object,
-        hot:Array
+        hot:Array,
+        letter:String
     },
     mounted() {
         this.scroll = new BScroll(this.$refs.wrapper)
+    },
+    watch: {
+        //监听点击字母值
+        letter (){
+            if(this.letter){
+                // 当 ref 和 v-for 一起使用的时候，你得到的引用将会是一个包含了对应数据源的这些子组件的数组。
+                const element = this.$refs[this.letter][0]  //调用数组 动态产生的dom元素 要用到数组  
+                this.scroll.scrollToElement(element)
+            }
+        }
     }
 }
 </script>
