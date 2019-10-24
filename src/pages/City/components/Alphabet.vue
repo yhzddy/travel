@@ -32,8 +32,14 @@ export default {
     },
     data () {
         return {
-            touchStatus:false
+            touchStatus:false,
+            startY:0,
+            time:null
         }
+    },
+    updated (){
+        // 当页面的数据被更新的时候，同时页面完成了对自己的渲染，该钩子就会执行
+        this.startY = this.$refs['A'][0].offsetTop
     },
     mounted() {},
     methods:{
@@ -45,12 +51,16 @@ export default {
         },
         handleTouchMove (e){
             if (this.touchStatus) {
-                const startY = this.$refs['A'][0].offsetTop
-                const touchY = e.touches[0].clientY - 89
-                const index = Math.floor((touchY - startY)/20)
-                if(index >=0 && index<this.letters.length){
-                      this.$emit('change',this.letters[index])
+                if(this.time){
+                    clearTimeout(this.time)
                 }
+                this.time = setTimeout(() => {
+                    const touchY = e.touches[0].clientY - 89
+                    const index = Math.floor((touchY - this.startY)/20)
+                    if(index >=0 && index<this.letters.length){
+                         this.$emit('change',this.letters[index])
+                    }
+                }, 16);
             }
         },
         handleTouchEnd (){
