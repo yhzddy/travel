@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import store from './store'
 import router from './router'
 import fastClick from 'fastclick'  //解决移动端300ms延迟
 import './assets/styles/reset.css'  //初始化不同浏览器 移动端的css样式
@@ -17,6 +18,7 @@ fastClick.attach(document.body)
 Vue.use(VueAwesomeSwiper, /* { default global options } */)   //Vue使用插件
 
 new Vue({
+  store,
   router,
   render: h => h(App),
 }).$mount('#app')

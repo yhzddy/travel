@@ -12,7 +12,8 @@
       <ul>
           <li class="search-item border-bottom"
           v-for="item in list" 
-          :key="item.id">
+          :key="item.id"
+          @click="handelCityClick(item.name)">
               {{item.name}}
           </li>
           <li v-show="hasNoData" class="search-item border-bottom">
@@ -67,6 +68,12 @@ export default {
                 }
                 this.list = result
             }, 100);
+        }
+    },
+    methods:{
+        handelCityClick(city){
+            this.$store.dispatch('changeCity',city)
+            this.$router.push('/')
         }
     },
     mounted() {
