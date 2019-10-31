@@ -2,7 +2,9 @@
   <div id="app">
     <!-- <a href='/dd'>dd </a> -->
     <!-- <router-link  to="/">新品</router-link> -->
-    <router-view></router-view>
+    <keep-alive>
+       <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 
