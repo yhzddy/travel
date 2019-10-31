@@ -54,6 +54,10 @@ export default {
     activated () {
         //给window绑定一个scroll事件，一旦他被执行，对应的handleScroll会被执行
         window.addEventListener('scroll',this.handleScroll)
+    },
+    //离开该页面的生命周期函数， 给全局事件函数解绑
+    deactivated() {
+        window.removeEventListener('scroll',this.handleScroll)
     }
 }
 </script>
