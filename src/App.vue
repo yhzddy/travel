@@ -2,7 +2,8 @@
   <div id="app">
     <!-- <a href='/dd'>dd </a> -->
     <!-- <router-link  to="/">新品</router-link> -->
-    <keep-alive>
+    <!-- 除了Detail其他的页面都做缓存 -->
+    <keep-alive exclude="Detail">
        <router-view></router-view>
     </keep-alive>
   </div>
