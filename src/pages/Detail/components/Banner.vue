@@ -9,12 +9,21 @@
                 {{bannerImgs.length}}</div>
         </div>
     </div>
-    <CommonGallary :imgs= "bannerImgs" v-if= "showGallary" @close= "handelGallaryClose"></CommonGallary>
+    <CommonFade>
+        <CommonGallary 
+            :imgs= "bannerImgs" 
+            v-if= "showGallary" 
+            @close= "handelGallaryClose"
+        >
+        </CommonGallary>
+    </CommonFade>
 </div>
 </template>
 
 <script>
 import CommonGallary from '@/common/gallary/Gallary.vue'
+import CommonFade from '@/common/fade/Fade.vue'
+
 
 export default {
     name: 'Banner',
@@ -25,7 +34,6 @@ export default {
     },
     data () {
         return{
-            imgs:['http://img1.qunarzz.com/sight/p0/1611/a2/a246388ce5e8330ea3.img.jpg_350x240_a643cc68.jpg'],
             showGallary:false
         }
     },
@@ -38,7 +46,8 @@ export default {
         }
     },
     components:{
-        CommonGallary:CommonGallary
+        CommonGallary:CommonGallary,
+        CommonFade:CommonFade
     }
 }
 </script>
