@@ -29,6 +29,7 @@ export default {
     data () {
         return{
             showAbs:true,
+            message:'vue生命周期',
             opacityStyle:{
                 opacity:0
             }
@@ -38,12 +39,11 @@ export default {
         handleScroll (){
             //document.documentElement.scrollTop 获取当前页面的滚动条纵坐标位置
             const top =document.documentElement.scrollTop
+            console.log(top)
             if( top >50 ){
                 let opacity = top / 140
                 opacity = opacity > 1 ? 1:opacity
-                this.opacityStyle = {
-                    opacity
-                }
+                this.opacityStyle = { opacity }
                 // this.opacityStyle.opacity = opacity  这样也可以
                 this.showAbs = false
             } else {
@@ -51,14 +51,14 @@ export default {
             }
         }
     },
-    activated () {
+    mounted () {
         //给window绑定一个scroll事件，一旦他被执行，对应的handleScroll会被执行
         window.addEventListener('scroll',this.handleScroll)
     },
     //离开该页面的生命周期函数， 给全局事件函数解绑
-    deactivated() {
+    beforeDestroy() {
         window.removeEventListener('scroll',this.handleScroll)
-    }
+    },
 }
 </script>
 

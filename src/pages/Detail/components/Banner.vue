@@ -84,7 +84,4 @@ export default {
                 .banner-icon
                     font-size :0.24rem
 
-
-
-
 </style>
